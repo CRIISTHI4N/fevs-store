@@ -1,10 +1,15 @@
 import Image from "next/image"
 import Link from "next/link"
 import { useUsuario } from "@/hooks/useUsuario"
+import { useEffect } from "react"
 
 export const Navbar = () => {
 
-    const { showNavOptions, changeNavOpt, } = useUsuario();
+    const { showNavOptions, setShowNavOptions, changeNavOpt, } = useUsuario();
+
+    useEffect(() => {
+        setShowNavOptions(false)
+    }, [])
 
     return (
         <>
@@ -24,7 +29,6 @@ export const Navbar = () => {
                             height={40}
                         />
                     </Link>
-
 
                     <ul
                         className={`fixed ${showNavOptions ? 'left-[calc(100%-45%)] lg:left-0' : 'left-[100%] lg:left-0'} top-[72px] bg-stone-900 w-[45%] h-screen flex flex-col pl-10 lg:relative lg:flex-row lg:gap-12 lg:h-auto lg:top-auto lg:right-auto lg:w-auto lg:pl-0 transition-all duration-200`}
